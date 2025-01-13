@@ -1,72 +1,64 @@
-import { createContext, useReducer, useState } from "react"
-import { User, userReducer } from "./reducer/user"
+import { createContext, Dispatch, SetStateAction, useReducer, useState } from "react"
+import { initialUser, User, userReducer } from "./reducer/user"
 import Login from "./Login"
 import UserNameAvatar from "./UserName+Avatar";
 import { Box } from "@mui/material";
 import Update from "./Update";
 
 
-    export type UserContextType = {
-        user: User;
-        userDispatch: React.Dispatch<any>; // Action typing can be more specific
-      };
-      
-     export const UserContext = createContext<UserContextType | null>(null); // יש להחזיר null במקרה שאין קונטקסט
+export type UserContextType = {
+  user: User;
+  userDispatch: React.Dispatch<any>; // Action typing can be more specific
+};
+
+export const UserContext = createContext<UserContextType | null>(null); // יש להחזיר null במקרה שאין קונטקסט
+export const IdContext = createContext<[Number, Dispatch<SetStateAction<Number>>]>([0, () => { },]);
 
 
-     const HomePage=()=>{
- 
- 
-    const initialUser:User={
-    fName:"ruti",
-    lName:"",
-    email:"",
-    password:"1234",
-    phone:"" 
-  }
-const [loginSuccess, setLoginSuccess] = useState(false); // מצב התחברות
+const HomePage = () => {
 
-const [user,userDispatch]=useReducer(userReducer,initialUser)
+
+  
+  const [loginSuccess, setLoginSuccess] = useState(false); // מצב התחברות
+  const [id, setId] = useState<Number>(0)
+
+  const [user, userDispatch] = useReducer(userReducer, initialUser)
 
   const handleLoginSuccess = () => {
-    setLoginSuccess(true); 
-  };
-
-   
-
     
-    
-    return(<>
+    console.log("ttttttttttttttttttttttttttttttttttttttttttttttttttttt")
+    setLoginSuccess(true);
+    console.log("showUpdate:", loginSuccess);
 
-<h1>HOME</h1>
+  }
+
+
+  return (<>
+
+    <h1>HOME</h1>
 
     <Box
       sx={{
         position: "fixed",
-        top: 5, 
+        top: 10,
         left: 5
       }}>
-        <UserContext.Provider value={{ user, userDispatch }}>
+      <UserContext.Provider value={{ user, userDispatch }}>
+        <IdContext.Provider value={[id, setId]}>
+          {!loginSuccess&& <Login onLoginSuccess={handleLoginSuccess}></Login>}
 
-        {loginSuccess===false && <Login onLoginSuccess={handleLoginSuccess}></Login> }
-        
-        {loginSuccess && <UserNameAvatar></UserNameAvatar>}
+          {loginSuccess && <UserNameAvatar/>}
 
-        <div></div>
-        {loginSuccess && <Update></Update>}
+          <div></div>
+          {/* {loginSuccess && <Update></Update>} */}
 
+        </IdContext.Provider>
+      </UserContext.Provider>
+    </Box>
 
-        </UserContext.Provider>
-</Box>
+  
 
-{/* {user.firstName}
-{user.lastName}
-{user.email}
-{user.password}
-{user.addres}
-{user.phone} */}
-
-    </>)
+  </>)
 
 }
 export default HomePage

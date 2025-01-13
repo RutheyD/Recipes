@@ -1,6 +1,7 @@
 
 import './App.css'
-import HomePage from './components/homePage'
+import HomePage from './components/HomePage'
+// import HomePage from './components/homePage'
 
 
 function App() {
@@ -9,8 +10,10 @@ function App() {
  
   return (
     <>
+    
 <HomePage/>
-      
+
+ {/* <RouterProvider router={myRouter} /> */}
     </>
   )
 }
