@@ -4,6 +4,7 @@ import Login from "./Login"
 import UserNameAvatar from "./UserName+Avatar";
 import { Box } from "@mui/material";
 import Update from "./Update";
+import SignUp from "./SignUp";
 
 
 export type UserContextType = {
@@ -20,24 +21,21 @@ const HomePage = () => {
 
   
   const [loginSuccess, setLoginSuccess] = useState(false); // מצב התחברות
+  const [signUpSuccess, setSignUpSuccess] = useState(false); // מצב התחברות
   const [id, setId] = useState<Number>(0)
 
   const [user, userDispatch] = useReducer(userReducer, initialUser)
 
-  const handleLoginSuccess = () => {
-    
-    console.log("ttttttttttttttttttttttttttttttttttttttttttttttttttttt")
-    setLoginSuccess(true);
-    console.log("showUpdate:", loginSuccess);
-
-  }
-
+  const handleLoginSuccess = () =>  setLoginSuccess(true);
+  
+  const handleSignUpSuccess = () => setSignUpSuccess(true);
+ 
 
   return (<>
 
     <h1>HOME</h1>
 
-    <Box
+ <Box
       sx={{
         position: "fixed",
         top: 10,
@@ -45,12 +43,22 @@ const HomePage = () => {
       }}>
       <UserContext.Provider value={{ user, userDispatch }}>
         <IdContext.Provider value={[id, setId]}>
-          {!loginSuccess&& <Login onLoginSuccess={handleLoginSuccess}></Login>}
+       
+        {(!loginSuccess&&!signUpSuccess)? 
+          <>
+            <Login onLoginSuccess={handleLoginSuccess} />
+            <SignUp onSignUpSuccess={handleSignUpSuccess}/>
 
-          {loginSuccess && <UserNameAvatar/>}
+            </>
+            
+           : 
+            <>
+              <UserNameAvatar />
+              <Update />
+            </>
+          }
 
-          <div></div>
-          {/* {loginSuccess && <Update></Update>} */}
+
 
         </IdContext.Provider>
       </UserContext.Provider>

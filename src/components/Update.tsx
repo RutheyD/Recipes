@@ -9,13 +9,15 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  background: "linear-gradient(90deg,rgb(152, 214, 233),rgb(248, 163, 253))", // מעבר צבעים
+
+  // bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
 
-const Update = ({succeedUpdateFunc}:{succeedUpdateFunc:Function}) => {
+const Update = () => {
 
 
 
@@ -55,30 +57,19 @@ const Update = ({succeedUpdateFunc}:{succeedUpdateFunc:Function}) => {
       phone: phoneref.current?.value || ''
     }
   })
-      handleClose()
-      succeedUpdateFunc()
+      
   }
   catch (e:any) {
-      if((e.response&&e.response===403)||e.response ===4000)
+      if(e.status === 401||e.response===403||e.response ===4000)
           alert("User Not found")
       console.log(e);
   }
-    // if (context)
-    //   context.userDispatch({
-    //     type: 'UPDATE', data: {
-    //       firstName: firstref.current?.value || '',
-    //       lastName: lastref.current?.value || '',
-    //       email: emailref.current?.value || '',
-    //       phone: phoneref.current?.value || ''
-    //     }
-    //   })
-
-
-// handleClose()
+    handleClose()
+ 
   }
 
   return (<>
-    {/* <Button onClick={handleOpen}>Update</Button> */}
+    <Button onClick={handleOpen} >Update</Button>
     <Modal
       open={open}
       onClose={handleClose}
@@ -101,7 +92,14 @@ const Update = ({succeedUpdateFunc}:{succeedUpdateFunc:Function}) => {
           <div></div>
 
 
-          <Button type="submit" variant="contained" >Save</Button>
+          <Button type="submit" variant="contained"sx={{
+                    backgroundColor: "rgb(218, 106, 224)", // ורוד
+                    color: "#fff", // טקסט בלבן
+                    "&:hover": {
+                      backgroundColor: "rgb(94, 203, 236)", // גוון כהה יותר
+                    },
+                    // (90deg,rgb(152, 214, 233),rgb(248, 163, 253))"
+                  }} >Save</Button>
          
           
         </Typography>

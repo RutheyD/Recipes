@@ -32,33 +32,37 @@ import Update from "./Update";
     };
   }
  const UserNameAvatar=() =>{ 
+  
       const context=useContext(UserContext)
     let firstName: string='',lastName:string='';
     if(context)
        { firstName=context.user.firstName
         lastName=context.user.lastName
        }
-       const [showUpdate,setShowUpdate]=useState(false)
-       const handleShowUpdate=()=>{
-        setShowUpdate(true)
-        console.log("showUpdate:", showUpdate);
+//        const [showUpdate,setShowUpdate]=useState(false)
+//        const handleShowUpdate=()=>{
+//         setShowUpdate(true)
+//         console.log("showUpdate:", showUpdate);
+// setShowUpdate(true)
+// console.log("showUpdate:", showUpdate);
 
-    }
-       const handleCloseUpdate=()=>{
-        setShowUpdate(false);
-    }
-    useEffect(() => {
-      console.log("showUpdate changed:", showUpdate);
-    }, [showUpdate]);
+//     }
+//        const handleCloseUpdate=()=>{
+//         setShowUpdate(false);
+//     }
+    // useEffect(() => {
+    //   console.log("showUpdate changed:", showUpdate);
+    // }, [showUpdate]);
     return (
       
       <Box sx={{ display: "flex", alignItems: "center", marginBottom:"20px"}}>
       <Avatar {...stringAvatar(firstName.toUpperCase())} />
       <Typography variant="h6" sx={{marginLeft:"10px"}}>Hello {firstName}!</Typography>
-      <div></div>
-      <Button onClick={handleShowUpdate}> Update </Button>
-   
+      {/* <div></div> */}
+      {/* <Button onClick={handleShowUpdate}> Update </Button> */}
+    {/* <div>{showUpdate}</div>
       {showUpdate&&<Update succeedUpdateFunc={handleCloseUpdate}/>}
+      <div>{showUpdate}</div> */}
       
     </Box>
     

@@ -21,12 +21,12 @@ type Action = {
 }
 export const userReducer=(state: User, action: Action):User => {
 
-    const {firstName,password}=action.data as Partial<User>
+    const {firstName,lastName,password}=action.data as Partial<User>
     switch (action.type){
         case'CREATE':
         return {
             firstName:firstName||"",
-            lastName:'',
+            lastName:lastName||"",
             email:'',
             password:password||"",
             address:'',
