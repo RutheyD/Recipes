@@ -1,23 +1,35 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import { FormEvent, useContext, useRef, useState } from "react";
-import { IdContext, UserContext } from "./HomePage";
 import axios from "axios";
+import { IdContext, UserContext } from "../HomePage";
 
 
 
 
-const style = {
+// const style = {
+//     position: 'absolute',
+//     top: '50%',
+//     left: '50%',
+//     transform: 'translate(-50%, -50%)',
+//     width: 400,
+//     background: "linear-gradient(90deg,rgb(152, 214, 233),rgb(248, 163, 253))", // מעבר צבעים
+//     border: '2px solid #000',
+//     boxShadow: 24,
+//     p: 4,
+//   };
+  const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    background: "linear-gradient(90deg,rgb(152, 214, 233),rgb(248, 163, 253))", // מעבר צבעים
-    border: '2px solid #000',
+    background: "linear-gradient(90deg,rgb(179, 179, 179),rgb(253, 220, 255))", // מעבר צבעים
+    // bgcolor: 'background.paper',
+    border: '3px solidrgb(103, 39, 107) ',
+    borderRadius: '16px',
     boxShadow: 24,
     p: 4,
   };
-  
 const SignUp = ({ onSignUpSuccess }: {onSignUpSuccess:Function}) => {
 
     const fNameRef=useRef<HTMLInputElement>(null)
@@ -90,7 +102,7 @@ const SignUp = ({ onSignUpSuccess }: {onSignUpSuccess:Function}) => {
                     backgroundColor: "rgb(218, 106, 224)", // ורוד
                     color: "#fff", // טקסט בלבן
                     "&:hover": {
-                      backgroundColor: "rgb(94, 203, 236)", // גוון כהה יותר
+                      backgroundColor: "rgb(14, 117, 148)", // גוון כהה יותר
                     }, }}
                  endIcon={":)"}>send</Button>
          

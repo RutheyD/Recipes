@@ -1,8 +1,8 @@
 
 import { RouterProvider } from 'react-router'
 import './App.css'
-import HomePage from './components/HomePage'
 import { myRouter } from './Router'
+import HomePage from './components/HomePage'
 // import HomePage from './components/homePage'
 
 

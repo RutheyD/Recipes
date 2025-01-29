@@ -1,10 +1,13 @@
 import { createContext, Dispatch, SetStateAction, useReducer, useState } from "react"
 import { initialUser, User, userReducer } from "./reducer/user"
-import Login from "./Login"
-import UserNameAvatar from "./UserName+Avatar";
 import { Box } from "@mui/material";
-import Update from "./Update";
-import SignUp from "./SignUp";
+import Login from "./user/Login";
+import SignUp from "./user/SignUp";
+import UserNameAvatar from "./user/UserName+Avatar";
+import Update from "./user/Update";
+import RecipeList from "./recipes/RecipesList";
+import AddRecipe from "./recipes/AddRecipe";
+
 
 
 export type UserContextType = {
@@ -32,9 +35,6 @@ const HomePage = () => {
  
 
   return (<>
-
-    <h1>HOME</h1>
-
  <Box
       sx={{
         position: "fixed",
@@ -48,23 +48,25 @@ const HomePage = () => {
           <>
             <Login onLoginSuccess={handleLoginSuccess} />
             <SignUp onSignUpSuccess={handleSignUpSuccess}/>
-
+            
             </>
             
            : 
             <>
               <UserNameAvatar />
               <Update />
+              <AddRecipe/>
             </>
           }
 
-
+      
 
         </IdContext.Provider>
       </UserContext.Provider>
     </Box>
 
-  
+{/* <h1>our recipes:</h1>  
+<RecipeList/> */}
 
   </>)
 

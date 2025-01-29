@@ -3,6 +3,8 @@ import UserPage from "./components/UserPage";
 import NavBar from "./components/NavBar";
 import Person from "./components/Person";
 import AppLayout from "./components/AppLayout";
+import RecipeList from "./components/recipes/RecipesList";
+import RecipeToShow from "./components/recipes/RecipeToShow";
 
 export const myRouter = createBrowserRouter([
     {        
@@ -19,7 +21,21 @@ export const myRouter = createBrowserRouter([
             },
             {
                 path: 'UserPage', element: <UserPage />
-            }
+            },
+            // {
+            //     path: 'RecipesList', element: <RecipeList/>
+            // },
+            {
+                path: 'RecipesList/', element: <RecipeList />
+                // ,children: [ {
+
+                //     path: ':id', element: <RecipeToShow />
+                // }]
+
+            },
+            // {
+            //     path: "/RecipesList/:recipeName", element: <RecipeToShow recipe={}/>
+            // }
     
 ]
 }

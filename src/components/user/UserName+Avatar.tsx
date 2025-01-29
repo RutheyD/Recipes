@@ -1,7 +1,6 @@
 import { Avatar, Box,Button,Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "./HomePage";
-import Update from "./Update";
+import { UserContext } from "../HomePage";
 
 
 

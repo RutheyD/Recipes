@@ -3,35 +3,28 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { IdContext, UserContext } from "./HomePage";
+import { IdContext, UserContext } from "../HomePage";
 import TextField from '@mui/material/TextField';
 import axios from "axios";
 
 // import SendIcon from '@mui/icons-material/Send';
 // import DeleteIcon from '@mui/icons-material/Delete';
-
-
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  background: "linear-gradient(90deg,rgb(152, 214, 233),rgb(248, 163, 253))", // מעבר צבעים
+  background: "linear-gradient(90deg,rgb(179, 179, 179),rgb(253, 220, 255))", // מעבר צבעים
   // bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: '3px solidrgb(103, 39, 107) ',
+  borderRadius: '16px',
   boxShadow: 24,
   p: 4,
 };
-
-
 const Login = ({ onLoginSuccess }: { onLoginSuccess: Function }) => {
-
-
-
   const fNameRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
-
   const context = useContext(UserContext)
   const [id, setId] = useContext(IdContext)
   const [open, setOpen] = useState(false);
@@ -40,13 +33,11 @@ const Login = ({ onLoginSuccess }: { onLoginSuccess: Function }) => {
   
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-
     try {
       const res = await axios.post(`http://localhost:3000/api/user/login`, {
         firstName: fNameRef.current?.value,
         password: passwordRef.current?.value
       })
-
       console.log(res);
       setId(res.data.user?.id || res.data.userId)
 
@@ -57,7 +48,6 @@ const Login = ({ onLoginSuccess }: { onLoginSuccess: Function }) => {
           password: passwordRef.current?.value,
         }
       })
-
       onLoginSuccess()
     }
     catch (e: any) {
@@ -72,9 +62,7 @@ const Login = ({ onLoginSuccess }: { onLoginSuccess: Function }) => {
     handleClose()
 
   }
-
   return (<>
-
     <Button onClick={handleOpen}>LogIn</Button>
     {open &&
       (
@@ -95,17 +83,14 @@ const Login = ({ onLoginSuccess }: { onLoginSuccess: Function }) => {
                     backgroundColor: "rgb(218, 106, 224)", // ורוד
                     color: "#fff", // טקסט בלבן
                     "&:hover": {
-                      backgroundColor: "rgb(94, 203, 236)", // גוון כהה יותר
+                      backgroundColor: "rgb(14, 117, 148)", // גוון כהה יותר
                     },
-                    // (90deg,rgb(152, 214, 233),rgb(248, 163, 253))"
                   }} endIcon={":)"}>send</Button>
 
               </Typography>
             </form>
           </Box>
         </Modal>)
-
-
     }
 
   </>)
