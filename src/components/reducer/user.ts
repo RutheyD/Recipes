@@ -40,8 +40,7 @@ export const userReducer=(state: User, action: Action):User => {
                 password :state.password,
                 address:action.data.address||state.address,
                 phone: action.data.phone || state.phone,
-                // ...state,
-                // ...action.data
+
 
             }
         default:

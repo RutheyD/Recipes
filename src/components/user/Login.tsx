@@ -3,20 +3,17 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { IdContext, UserContext } from "../HomePage";
 import TextField from '@mui/material/TextField';
 import axios from "axios";
+import { IdContext, UserContext } from "../AppLayout";
 
-// import SendIcon from '@mui/icons-material/Send';
-// import DeleteIcon from '@mui/icons-material/Delete';
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  background: "linear-gradient(90deg,rgb(179, 179, 179),rgb(253, 220, 255))", // מעבר צבעים
-  // bgcolor: 'background.paper',
+  background: "white",
   border: '3px solidrgb(103, 39, 107) ',
   borderRadius: '16px',
   boxShadow: 24,
@@ -30,7 +27,7 @@ const Login = ({ onLoginSuccess }: { onLoginSuccess: Function }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     try {
@@ -54,16 +51,12 @@ const Login = ({ onLoginSuccess }: { onLoginSuccess: Function }) => {
 
       if (e.status === 401 || e.response && e.response === 401 || e.response === 400)
         alert('מייל או סיסמא לא תקינים')
-
       console.log(e);
-
     }
-
     handleClose()
-
   }
   return (<>
-    <Button onClick={handleOpen}>LogIn</Button>
+    <Button onClick={handleOpen} sx={{ color: "rgb(14, 117, 148)" }}>LogIn</Button>
     {open &&
       (
         <Modal
@@ -75,24 +68,22 @@ const Login = ({ onLoginSuccess }: { onLoginSuccess: Function }) => {
           <Box sx={style}>
             <form onSubmit={handleSubmit}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                <TextField type="text" id="first_name" label="First name"  variant="outlined"sx={{ marginBottom: 2 }} inputRef={fNameRef} />
+                <TextField type="text" id="first_name" label="First name" variant="outlined" sx={{ marginBottom: 2 }} inputRef={fNameRef} />
                 <div></div>
-                <TextField type="password" id="pasword" label="Password" variant="outlined"sx={{ marginBottom: 2 }} inputRef={passwordRef} />
+                <TextField type="password" id="pasword" label="Password" variant="outlined" sx={{ marginBottom: 2 }} inputRef={passwordRef} />
                 <div></div>
-                <Button type="submit" variant="contained"sx={{
-                    backgroundColor: "rgb(218, 106, 224)", // ורוד
-                    color: "#fff", // טקסט בלבן
-                    "&:hover": {
-                      backgroundColor: "rgb(14, 117, 148)", // גוון כהה יותר
-                    },
-                  }} endIcon={":)"}>send</Button>
-
+                <Button type="submit" variant="contained" sx={{
+                  backgroundColor: "rgb(218, 106, 224)",
+                  color: "#fff",
+                  "&:hover": {
+                    backgroundColor: "rgb(14, 117, 148)",
+                  },
+                }} endIcon={":)"}>send</Button>
               </Typography>
             </form>
           </Box>
         </Modal>)
     }
-
   </>)
 }
 export default Login

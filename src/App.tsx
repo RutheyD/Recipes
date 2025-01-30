@@ -2,21 +2,10 @@
 import { RouterProvider } from 'react-router'
 import './App.css'
 import { myRouter } from './Router'
-import HomePage from './components/HomePage'
-// import HomePage from './components/homePage'
-
-
-function App() {
-
-  // const theme[user,dispatch]=useReducer(userReducer,{fName:"ruti",})
- 
+function App() { 
   return (
     <>
-    
-<HomePage/>
 <RouterProvider router={myRouter} />
-
- {/* <RouterProvider router={myRouter} /> */}
     </>
   )
 }
