@@ -6,6 +6,7 @@ import AppLayout from "./components/AppLayout";
 import RecipeList from "./components/recipes/RecipesList";
 import RecipeToShow from "./components/recipes/RecipeToShow";
 import AddRecipe from "./components/recipes/AddRecipe";
+import UpdateRecipesList from "./components/recipes/UpdateRecipesList";
 
 export const myRouter = createBrowserRouter([
     {
@@ -23,6 +24,9 @@ export const myRouter = createBrowserRouter([
             },
             {
                 path: 'AddRecipe/', element: <AddRecipe />
+            },
+            {
+                path: 'UpdateRecipe/', element: <UpdateRecipesList />
             }
         ]
     }

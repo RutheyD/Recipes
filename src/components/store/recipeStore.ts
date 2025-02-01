@@ -1,3 +1,4 @@
+import { Description } from "@mui/icons-material";
 import axios from "axios";
 import { makeAutoObservable } from "mobx";
 
@@ -38,8 +39,7 @@ class RecipeStore {
             },
                 { headers: { 'user-id': id + "" } })
 
-            this.getAllRecipes()
-
+            this.listOfRecipes.push(res.data.recipe)
             console.log(res);
 
         }
@@ -53,7 +53,32 @@ class RecipeStore {
         }
 
     }
-
+async updateRecipe(recipe: Partial<RecipeType>, id: number){
+    try {
+        const res = await axios.put('http://localhost:3000/api/recipes', {
+            title: recipe.title,
+            description: recipe.description,
+            ingredients: recipe.ingredients,
+            instructions: recipe.instructions
+         
+        }, {
+          headers: { 'recipe-id': id + "" }
+        }
+        )
+        this.listOfRecipes = this.listOfRecipes.map(r => (r.id === id ? res.data : r));
+        // this.listOfRecipes.push(res.data.recipe)
+        console.log(res);
+  
+       
+      }
+      catch (e: any) {
+        if (e.status === 401 || e.response === 403 || e.response === 4000)
+          alert("User Not found")
+        if (e.status === 403)
+            alert('problem in connection')
+        console.log(e);
+      }
+}
 
 }
 

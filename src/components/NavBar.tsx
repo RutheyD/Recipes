@@ -23,8 +23,9 @@ const NavBar = () => {
           <Link to='/' style={{ color: 'rgb(0, 0, 0)', margin: '0 10px' }}>Home Page</Link> |
           <Link to='/RecipesList' style={{ color: 'rgb(0, 0, 0)', margin: '0 10px' }}>Recipes</Link>
           {id != 0 &&
-            <Link to="/AddRecipe" style={{ color: 'rgb(0, 0, 0)', margin: '0 10px' }}>Add Recipe</Link>
-          }
+           <> | <Link to="/AddRecipe" style={{ color: 'rgb(0, 0, 0)', margin: '0 10px' }}>Add Recipe</Link>
+            | <Link to="/UpdateRecipe" style={{ color: 'rgb(0, 0, 0)', margin: '0 10px' }}>Update Recipe</Link>
+          </>}
 
         </Box>
       </Toolbar>
