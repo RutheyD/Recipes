@@ -1,5 +1,5 @@
-import { Avatar, Box, Button, Typography } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
+import { Avatar, Box, Typography } from "@mui/material";
+import { useContext } from "react";
 import { UserContext } from "../AppLayout";
 
 

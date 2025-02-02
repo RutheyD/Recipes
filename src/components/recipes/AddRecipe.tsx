@@ -70,10 +70,8 @@ const AddRecipe = observer(() => {
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div><TextField {...register('title')} type="text" fullWidth label="title" variant="outlined" />
-                            {errors.title && <span>{errors.title.message}</span>}</div>
-                        <div><TextField {...register('description')} type="text" fullWidth label="description" variant="outlined" />
-                            {errors.description && <span>{errors.description.message}</span>}</div>
+                 <TextField {...register('title')} type="text" fullWidth label="title" variant="outlined" sx={{margin:'3px'}} error={!!errors.title} helperText={errors.title?.message}  />               
+                       <TextField {...register('description')} type="text" fullWidth label="description" variant="outlined" sx={{margin:'3px'}} error={!!errors.description} helperText={errors.description?.message} />
                         <Typography variant="subtitle1" sx={{ mt: 2 }}>Ingredients:</Typography>
                         {fields.map((field, index) => (
                             <div key={field.id}>
@@ -92,9 +90,7 @@ const AddRecipe = observer(() => {
                             startIcon={<AddIcon />}>
                             Add Product
                         </Button>
-                        <div><TextField {...register('instructions')} type="text" fullWidth label="instructions" variant="outlined" multiline />
-                            {errors.instructions && <span>{errors.instructions.message}</span>}</div>
-
+                       < TextField {...register('instructions')} type="text" fullWidth label="instructions" variant="outlined" multiline sx={{margin:'3px'}} error={!!errors.instructions} helperText={errors.instructions?.message} />
                         <Button type='submit' variant="contained" endIcon={<SendIcon />} sx={{
                             backgroundColor: 'white',
                             color: "rgb(14, 117, 148)",

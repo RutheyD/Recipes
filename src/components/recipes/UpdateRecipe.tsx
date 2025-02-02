@@ -68,11 +68,9 @@ const UpdateRecipe = observer(({ recipeToUpdate }: { recipeToUpdate: RecipeType 
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div><TextField {...register('title')} type="text" fullWidth label="title" variant="outlined" />
-                            {errors.title && <span>{errors.title.message}</span>}</div>
-                        <div><TextField {...register('description')} type="text" fullWidth label="description" variant="outlined" />
-                            {errors.description && <span>{errors.description.message}</span>}</div>
-                        <Typography variant="subtitle1" sx={{ mt: 2 }}>Ingredients:</Typography>
+                        <TextField {...register('title')} type="text" fullWidth label="title" variant="outlined"sx={{margin:'3px'}} error={!!errors.title} helperText={errors.title?.message} />
+                        <TextField {...register('description')} type="text" fullWidth label="description" variant="outlined"sx={{margin:'3px'}} error={!!errors.description} helperText={errors.description?.message} />
+                        <Typography variant="subtitle1" sx={{ mt: 2 }} >Ingredients: </Typography>
                         {fields.map((field, index) => (
                             <div key={field.id}>
                                 <TextField
@@ -84,19 +82,14 @@ const UpdateRecipe = observer(({ recipeToUpdate }: { recipeToUpdate: RecipeType 
                                 <Button onClick={() => remove(index)}>Remove</Button>
                             </div>))}
                         <Button
+                         sx={{margin:'3px'}}
                             onClick={() => append('')}
                             variant="outlined"
                             startIcon={<AddIcon />}>
                             Add Product
                         </Button>
-                        <div><TextField {...register('instructions')} type="text" fullWidth label="instructions" variant="outlined" multiline />
-                            {errors.instructions && <span>{errors.instructions.message}</span>}</div>
-                        <Button type='submit' variant="contained" endIcon={<SendIcon />} sx={{
-                            backgroundColor: 'white',
-                            color: "rgb(14, 117, 148)",
-                            marginTop: '15px',
-                            '&:hover': { backgroundColor: '#f5f5f5', },
-                        }}
+                        <TextField {...register('instructions')} type="text" fullWidth label="instructions" variant="outlined" multiline sx={{margin:'3px'}} error={!!errors.instructions} helperText={errors.instructions?.message} />
+                        <Button type='submit' variant="contained" endIcon={<SendIcon />} sx={{ backgroundColor: 'white', color: "rgb(14, 117, 148)", marginTop: '15px', '&:hover': { backgroundColor: '#f5f5f5', }, }}
                         >Send</Button>
                     </form>
                 </Typography>

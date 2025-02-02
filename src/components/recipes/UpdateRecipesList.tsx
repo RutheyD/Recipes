@@ -4,17 +4,13 @@ import { IdContext } from "../AppLayout"
 import recipeStore, { RecipeType } from "../store/recipeStore"
 import Grid from "@mui/material/Grid2"
 import { Box, Button, Typography } from "@mui/material"
-import Recipe from "./Recipe"
 import UpdateRecipe from "./UpdateRecipe"
-
 const UpdateRecipesList=observer(()=>{
 const [id] = useContext(IdContext)
 const list:RecipeType[]=recipeStore.listOfRecipes.filter(r=>+r.authorId===+id)
 const [clicked,setClicked]=useState(false)
 const [clickedRecipeId,setClickedRecipeId]=useState<RecipeType>()
-
     return (<>
-    
     <Grid container sx={{ height: "100%", padding: 2}}>
             <Grid size={12} sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", overflowY: "auto" }}>
                 <Box sx={{ width: "80%" }}>

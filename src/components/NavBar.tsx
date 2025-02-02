@@ -13,10 +13,9 @@ const NavBar = () => {
         top: 5,
         right: 5,
         width: "auto",
-        background: "linear-gradient(90deg,rgb(14, 117, 148),rgb(248, 163, 253))", // מעבר צבעים
+        background: "linear-gradient(90deg,rgb(14, 117, 148),rgb(248, 163, 253))", 
         borderRadius: 2,
-      }}
-    >
+      }}>
 
       <Toolbar sx={{ padding: "0 10px" }}>
         <Box sx={{ display: "flex", gap: 2 }}>
